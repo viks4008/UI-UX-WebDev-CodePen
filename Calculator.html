@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>ToDO List</title>
+    <link rel='stylesheet' href='style.css'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calculator {
+            margin-top: 30px;
+            border: 1px solid #717377;
+            padding: 8px 12px 12px 12px;
+            border-radius: 16px;
+            background: transparent;
+            box-shadow: 0px 3px 15px rgba(113, 115, 119, 0.5);
+            background-color: black;
+        }
+
+        hr {
+            margin-bottom: 4px;
+        }
+
+        input {
+            width: 320px;
+            border: none;
+            padding: 20px;
+            margin: 5px 10px 10px 10px;
+            background: transparent;
+            box-shadow: 0px 3px 15px rgbs(84, 84, 84, 0.1);
+            font-size: 40px;
+            text-align: right;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+        input::placeholder {
+            color: #ffffff;
+        }
+
+        button {
+            border: none;
+            width: 60px;
+            height: 60px;
+            margin: 10px;
+            border-radius: 50%;
+            background: transparent;
+            color: #ffffff;
+            font-size: 20px;
+            box-shadow: -8px -8px 15px rgba(107, 90, 90, 0.1);
+            cursor: pointer;
+        }
+
+        .equalBtn {
+            background-color: #fb7c14;
+        }
+
+        .orrange-bg {
+            background-color: #fb7c14;
+        }
+
+        .gray-bg {
+            background-color: rgb(143, 142, 142);
+        }
+
+        .darkgray-bg {
+            background-color: rgb(51, 51, 51);
+        }
+
+        .operator {
+            color: #6dee0a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <div class="main">
+            <div class="container">
+                <div class="calculator">
+                    <input type="text" id="inputBox" placeholder="0" />
+                    <hr>
+                    <div>
+                        <button class="button gray-bg">AC</button>
+                        <button class="button gray-bg">DEL</button>
+                        <button class="button gray-bg">%</button>
+                        <button class="button orrange-bg">/</button>
+                    </div>
+                    <div>
+                        <button class="button darkgray-bg">7</button>
+                        <button class="button darkgray-bg">8</button>
+                        <button class="button darkgray-bg">9</button>
+                        <button class="button orrange-bg">*</button>
+                    </div>
+                    <div>
+                        <button class="button darkgray-bg">4</button>
+                        <button class="button darkgray-bg">5</button>
+                        <button class="button darkgray-bg">6</button>
+                        <button class="button orrange-bg">-</button>
+                    </div>
+                    <div>
+                        <button class="button darkgray-bg">1</button>
+                        <button class="button darkgray-bg">2</button>
+                        <button class="button darkgray-bg">3</button>
+                        <button class="button orrange-bg">+</button>
+                    </div>
+
+                    <div>
+                        <button class="button darkgray-bg">00</button>
+                        <button class="button darkgray-bg">0</button>
+                        <button class="button darkgray-bg">.</button>
+                        <button class="button equalBtn">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src='' \\>
+            let input = document.getElementById('inputBox');
+            let buttons = document.querySelectorAll('button');
+
+            let result = "";
+            let arr = Array.from(buttons);
+            arr.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    if (e.target.innerHTML == '=') {
+                        if (result != "") {
+                            result = eval(result);
+                            input.value = result;
+                        }
+                    }
+                    else if (e.target.innerHTML == 'AC') {
+                        result = "";
+                        input.value = result;
+                    }
+                    else if (e.target.innerHTML == 'DEL') {
+                        result = result.substring(0, result.length - 1);
+                        input.value = result;
+                    }
+                    else {
+                        result += e.target.innerHTML;
+                        input.value = result;
+                    }
+                })
+            })
+        </script>
+</body>
+
+</html>
