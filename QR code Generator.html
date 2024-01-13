@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OR Code</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <style>
+        .container {
+            width: 100%;
+            height: 100px;
+            border: 1px solid red;
+            border-radius: 10px;
+            background-color: beige;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        label {
+            font-weight: 700;
+        }
+
+        input {
+            margin: 10px;
+        }
+
+        .qr-box {
+            width: 80%;
+            background-color: ivory;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 50px;
+            padding: 10px;
+        }
+
+        #refreshBtn {
+            width: 80px;
+            height: 30px;
+            border-radius: 10px;
+            border: solid 1px yellow;
+            background-color: brown;
+            color: burlywood;
+            margin: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <label for="string">
+            Input Letter To Convert Into QR Code :
+        </label>
+        <input type="text" name="string" id="string">
+        <button onclick="generateQRCode()">Generate QR</button>
+    </div>
+    <div class="qr-box">
+        <div id="qrcode">
+        </div>
+        <button id="refreshBtn" onclick="refreshPage()">RESET</button>
+
+        <script>
+            function generateQRCode() {
+                const text = document.getElementById("string").value;
+
+                // Create a new QRCode instance
+                const qrcode = new QRCode(document.getElementById("qrcode"), {
+                    text: text,
+                    width: 128,
+                    height: 128
+                });
+            }
+
+            function refreshPage() {
+                location.reload();
+            }
+
+        </script>
+    </div>
+</body>
+
+</html>
