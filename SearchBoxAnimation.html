@@ -1,0 +1,93 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="website icon" type="png" href="/Navbar/Image/favicon.png">
+    <title>Vikram Dhole</title>
+    <!--  Bootstrap CSS Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!--  Bootstrap JS Link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <!-- Font Awasome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .search {
+            margin: 20px;
+            display: inline-flex;
+            align-items: center;
+            background-color: black;
+            color: black;
+            padding: 10px;
+            border-radius: 40px;
+        }
+
+        .search :is(input, button) {
+            color: inherit;
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search__input {
+            width: 0;
+            transition: width 0.5s;
+        }
+
+        .search__button {
+            display: grid;
+            place-items: center;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            transition: color 0.25s;
+        }
+
+        .search__button:hover {
+            color: #e3e3e3;
+        }
+
+        .search:focus-within input {
+            width: 180px;
+        }
+
+        ::placeholder {
+            font: inherit;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-white col text-center">
+        <form class="search">
+            <input type="text" id="search" class="search__input text-white" placeholder="Search...." />
+            <button type="button" class="search__button">
+                <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
+            </button>
+        </form>
+    </div>
+
+    <script>
+        function searchBooks() {
+            var searchTerm = document.getElementById("search").value;
+            var books = document.getElementsByClassName("card");
+            for (var i = 0; i < books.length; i++) {
+                var bookName = books[i].getElementsByClassName("card-header")[0].innerHTML;
+                if (bookName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+                    books[i].style.display = "block";
+                } else {
+                    books[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
